@@ -1,0 +1,13 @@
+{
+  "name": "project-week-i",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "less": "less-watch-compiler less css index.less",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Matt Hardman",
+  "license": "ISC"
+}
