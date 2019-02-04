@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "alias": "lambda-proj",
+  "alias": "rentstuff",
   "builds": [
     {
       "src": "index.html",
