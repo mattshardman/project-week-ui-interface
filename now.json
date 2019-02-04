@@ -1,0 +1,18 @@
+{
+  "version": 2,
+  "alias": "lambda-proj",
+  "builds": [
+    {
+      "src": "index.html",
+      "use": "@now/static"
+    },
+    {
+      "src": "/css/index.css",
+      "use": "@now/static"
+    },
+    {
+      "src": "/header/Header.js",
+      "use": "@now/static"
+    }
+  ]
+}
