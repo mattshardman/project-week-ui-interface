@@ -24,6 +24,10 @@
             color: #000;
             transform: rotate(180deg);
         }
+
+        @media (min-width: 900px) {
+            display: none;
+        }
     }
 
     .menu{
@@ -53,9 +57,47 @@
             border: none;
             box-shadow: none;
         }
+
+        @media (min-width: 900px) {
+            display: none;
+        }
     }
 
     .open {
         transform: translateY(0%);
     }
+
+    .menu-desktop {
+        display: none;
+    }
+
+    @media (min-width: 900px) {
+        .flex(space-between);
+        .logo {
+            margin: 0 3%;
+        }
+        .menu-desktop {
+            display: flex;
+            margin-right: 2%;
+            height: 80px;
+            .menu-items {
+                height: 100%;
+                .flex();
+                .menu-item {
+                    .flex();
+                    font-size: 14px;
+                    height: 100%;
+                    padding: 0 15px;
+                    color: #fff;
+                    text-decoration: none;
+                    border-bottom: 1.5px transparent solid;
+                    transition: 420ms border-bottom;
+                    &:hover {
+                        border-bottom: 1.5px white solid;
+                    }
+                }
+            }
+        }
+    }
+    
 }
