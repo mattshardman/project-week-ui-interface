@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <link rel="stylesheet" href="css/index.css" />
     <link
-      href="https://fonts.googleapis.com/css?family=Raleway"
+      href="https://fonts.googleapis.com/css?family=Courgette|Lato|Raleway"
       rel="stylesheet"
     />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -15,11 +15,12 @@
       rel="stylesheet"
     />
     <script src="header/Header.js" async></script>
+    <script src="explore-card/ExploreCard.js" async></script>
     <title>Document</title>
   </head>
   <body>
     <header class="banner">
-      <div class="logo"></div>
+      <div class="logo">T</div>
       <button id="drop-down-arrow">
         <i class="material-icons arrow">
           expand_more
@@ -40,18 +41,50 @@
       </nav>
 
       <nav class="menu-desktop">
-          <div class="menu-items">
-            <a class="menu-item" href="">Sell a product</a>
-            <a class="menu-item" href="">Rent a product</a>
-            <a class="menu-item" href="">Help</a>
-            <a class="menu-item" href="">Sign up</a>
-            <a class="menu-item" href="">Log in</a>
-          </div>
-        </nav>
+        <div class="menu-items">
+          <a class="menu-item" href="">Sell a product</a>
+          <a class="menu-item" href="">Rent a product</a>
+          <a class="menu-item" href="">Help</a>
+          <a class="menu-item" href="">Sign up</a>
+          <a class="menu-item" href="">Log in</a>
+        </div>
+      </nav>
     </header>
 
     <section class="hero">
+      <div class="bg">
+        <h1 class="heading">Hire unique products at a moments notice.</h1>
+      </div>
+      <div class="input-section">
+        <h1 class="heading-desktop">
+          Hire unique products at a moments notice.
+        </h1>
+        <div class="label">
+          <small>WHAT</small>
+          <input type="text" class="input" placeholder="Anything" />
+        </div>
+        <div class="input-dates">
+          <div class="label">
+            <small>FROM</small>
+            <input type="date" class="input input-from" />
+          </div>
+          <div class="label">
+            <small>TO</small>
+            <input type="date" class="input input-to" />
+          </div>
+        </div>
+        <div class="label">
+          <button id="search-button">Search</button>
+        </div>
+      </div>
+    </section>
 
+    <section class="explore">
+      <h2 class="heading">Explore Categories</h2>
+      <div class="explore-tiles">
+        <div class="tile-wrapper">
+        </div>
+      </div>
     </section>
   </body>
 </html>
