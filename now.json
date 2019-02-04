@@ -13,6 +13,10 @@
     {
       "src": "/header/Header.js",
       "use": "@now/static"
+    },
+    {
+      "src": "/explore-card/ExploreCard.js",
+      "use": "@now/static"
     }
   ]
 }
