@@ -18,7 +18,8 @@
     <script src="explore-card/ExploreCard.js" async></script>
     <script src="carousel/Carousel.js" async></script>
     <script src="product-card/ProductCard.js" async></script>
-    <title>Document</title>
+    <script src="search/search.js" async></script>
+    <title>Hire Products</title>
   </head>
   <body>
     <header class="banner">
@@ -61,23 +62,30 @@
         <h1 class="heading-desktop">
           Hire unique products at a moments notice.
         </h1>
-        <div class="label">
-          <small>WHAT</small>
-          <input type="text" class="input" placeholder="Anything" />
-        </div>
-        <div class="input-dates">
+        <form action="">
           <div class="label">
-            <small>FROM</small>
-            <input type="date" class="input input-from" />
+            <small>WHAT</small>
+            <input
+              type="text"
+              class="input"
+              placeholder="Anything"
+              id="search"
+            />
+          </div>
+          <div class="input-dates">
+            <div class="label">
+              <small>FROM</small>
+              <input type="date" class="input input-from" />
+            </div>
+            <div class="label">
+              <small>TO</small>
+              <input type="date" class="input input-to" />
+            </div>
           </div>
           <div class="label">
-            <small>TO</small>
-            <input type="date" class="input input-to" />
+            <button id="search-button" type="submit">Search</button>
           </div>
-        </div>
-        <div class="label">
-          <button id="search-button">Search</button>
-        </div>
+        </form>
       </div>
     </section>
 
@@ -126,9 +134,7 @@
     <section class="products-section">
       <h2 class="heading">Top-rated products</h2>
       <p class="sub-heading">Rent the products our users love most</p>
-      <div id="productCards" class="cards-wrapper">
-        
-      </div>
+      <div id="productCards" class="cards-wrapper"></div>
     </section>
   </body>
 </html>

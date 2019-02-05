@@ -1,0 +1,42 @@
+.search-banner {
+  width: 100%;
+  height: 90px;
+  .flex(space-around; center;);
+  border-bottom: 1px #ddd solid;
+
+  @media (min-width: 900px) {
+    .flex(flex-start;);
+  }
+}
+
+.search-logo {
+  z-index: 100;
+  .flex();
+  height: 50px;
+  width: 10%;
+  color: #ff5a5f;
+  font-size: 40px;
+  border-radius: 50%;
+  font-family: "Courgette", cursive;
+}
+
+.search-box {
+  .flex(flex-start;);
+  border: 1px solid #eaeaea;
+  height: 50px;
+  width: 420px;
+  max-width: 70%;
+  border-radius: 3px;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+  padding: 0 20px;
+
+  .search {
+    height: 100%;
+    width: 75%;
+    outline: none;
+  }
+
+  .material-icons {
+      margin-right: 20px;
+  }
+}
