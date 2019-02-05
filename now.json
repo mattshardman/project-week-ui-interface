@@ -17,6 +17,14 @@
     {
       "src": "/explore-card/ExploreCard.js",
       "use": "@now/static"
+    },
+    {
+      "src": "/carousel/Carousel.js",
+      "use": "@now/static"
+    },
+    {
+      "src": "/product-card/ProductCard.js",
+      "use": "@now/static"
     }
   ]
 }
