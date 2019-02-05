@@ -67,6 +67,7 @@ function CardMaker({
   rating.appendChild(ratingNum);
 
   const stars = document.createElement('div');
+  stars.classList.add('stars');
   [...Array(numberOfRatings)].forEach(() => {
     const star = document.createElement('i');
     star.classList.add('material-icons');

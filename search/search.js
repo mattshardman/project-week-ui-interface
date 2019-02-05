@@ -10,5 +10,6 @@ searchText.addEventListener('change', (e) => {
 searchButton.addEventListener('click', (e) => {
   e.preventDefault();
   //   searchTag.setAttribute('href', 'hello');
+  console.log(term);
   window.location.href = `search.html?term=${term}`;
 });
