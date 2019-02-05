@@ -1,65 +1,84 @@
-const searchData = [
-  {
-    imgSrc: 'https://images.unsplash.com/photo-1531297484001-80022131f5a1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1907&q=80',
-    type: 'LAPTOP',
-    product: 'A really good laptop',
-    description: 'What about it',
-    numberOfRatings: 3,
-    users: 47,
-  },
-  {
-    imgSrc: 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80',
-    type: 'HEADPHONES',
-    product: 'Some really good headphones',
-    description: 'What about it',
-    numberOfRatings: 4,
-    users: 20,
-  },
-  {
-    imgSrc: 'https://images.unsplash.com/photo-1507646227500-4d389b0012be?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1400&q=80',
-    type: 'VOICE SPEAKER',
-    product: 'A really good speaker',
-    description: 'What about it',
-    numberOfRatings: 5,
-    users: 180,
-  },
-  {
-    imgSrc: 'https://images.unsplash.com/photo-1486611367184-17759508999c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1566&q=80',
-    type: 'DRONE',
-    product: 'A really good drone',
-    description: 'What about it',
-    numberOfRatings: 2,
-    users: 80,
-  },
-];
+const searchData = products; //eslint-disable-line
 
-const searchBox = document.querySelector('#searchInput');
+function parseQuery(query) {
+  const result = JSON.parse(
+    `{"${decodeURI(query)
+      .replace(/"/g, '\\"')
+      .replace(/&/g, '","')
+      .replace(/=/g, '":"')}"}`,
+  ).term || 'please enter a search term';
+  return result;
+}
 
-const query = window.location.search.substring(1);
-const parsedQuery = JSON.parse(`{"${decodeURI(query).replace(/"/g, '\\"').replace(/&/g, '","').replace(/=/g, '":"')}"}`).term;
-searchBox.setAttribute('value', parsedQuery);
-
-const exploreHeader = document.querySelector('#exploreHeader');
-const searchResults = document.querySelector('#searchResults');
+function setInitialSearch(element, parsedQuery) {
+  element.setAttribute('value', parsedQuery);
+}
 
 function renderResults(data, searchTerm) {
+  const exploreHeader = document.querySelector('#exploreHeader');
+  const searchResults = document.querySelector('#searchResults');
+  const exploreTiles = document.querySelector('.explore-tile-wrapper');
+
   searchResults.innerHTML = '';
-  exploreHeader.textContent = `Explore ${searchTerm.toLowerCase()}`;
+  exploreTiles.innerHTML = '';
+
+  if (searchTerm === 'please enter a search term') {
+    exploreHeader.textContent = 'You did not enter a search term';
+    return null;
+  }
+
+  function formatSearchTerm(input) {
+    const char0 = input.charAt().toUpperCase();
+    const restOfString = input.toLowerCase().slice(1);
+    const s = restOfString.charAt(restOfString.length - 1) === 's' ? '' : 's';
+    const result = `${char0}${restOfString}${s}`;
+    return result;
+  }
+
+  const formattedSearchTerm = formatSearchTerm(searchTerm);
+
+  exploreHeader.textContent = `Explore ${formattedSearchTerm}`;
   const filteredData = data.filter((each) => {
     const type = each.type.split(' ').map(item => item.toLowerCase());
+    if (searchTerm.includes(type)) {
+      return true;
+    }
+
     if (type.includes(searchTerm)) {
       return true;
     }
+
     return false;
   });
 
+  const thing = ExploreCardMaker({ //eslint-disable-line
+    title: 'Rent',
+    photo: filteredData[0].imgSrc,
+  });
+
+  const thing2 = ExploreCardMaker({ //eslint-disable-line
+    title: 'Instructors',
+    photo:
+      'https://images.unsplash.com/photo-1500048993953-d23a436266cf?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60',
+  });
+
+  exploreTiles.appendChild(thing);
+  exploreTiles.appendChild(thing2);
   filteredData.forEach(each => searchResults.appendChild(CardMaker(each))); //eslint-disable-line
+  return null;
 }
 
-searchBox.addEventListener('change', (e) => {
-  const { value } = e.target;
-  renderResults(searchData, value);
-});
+(function searchResults() {
+  const searchBox = document.querySelector('#searchInput');
+  const query = window.location.search.substring(1);
 
+  const parsedQuery = parseQuery(query);
 
-renderResults(searchData, parsedQuery);
+  searchBox.addEventListener('change', (e) => {
+    const { value } = e.target;
+    renderResults(searchData, value);
+  });
+
+  setInitialSearch(searchBox, parsedQuery);
+  renderResults(searchData, parsedQuery);
+}());
