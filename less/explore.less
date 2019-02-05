@@ -4,7 +4,7 @@
   padding: 30px 0;
 
   @media (min-width: 900px) {
-    padding-top: 100vh;
+    padding: 100vh 10% 0 10%;
   }
 
   .heading {
@@ -28,10 +28,13 @@
       width: 950px;
       padding: 0 5%;
       .flex(space-between; center;);
+
       @media (min-width: 900px) {
+        .flex(flex-start; center;);
         width: 100%;
         overflow: show;
       }
+
 
       .tile {
         .flex(space-around; flex-start; column);
@@ -55,27 +58,29 @@
 
         .title {
           .flex(flex-start; flex-start;);
-          font-size: 12px;
+          font-size: 14px;
+          font-weight: 700;
           padding: 10px;
           height: 50px;
           width: 100%;
-        }
+        }      
 
         @media (min-width: 900px) {
-          width: 30%;
-          height: 90px;
+          width: 25%;
+          height: 85px;
+          margin-right: 20px;
           .flex();
 
           .img {
             height: 100%;
-            width: 30%;
+            width: 40%;
           }
 
           .title {
             .flex(flex-start;);
             height: 100%;
-            width: 70%;
-            font-size: 14px;
+            width: 60%;
+            font-size: 16px;
             font-weight: 700;
           }
         }
