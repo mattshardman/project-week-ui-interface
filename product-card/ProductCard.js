@@ -128,16 +128,21 @@ function ProductCardMaker({ //eslint-disable-line
 
   card.addEventListener('click', () => {
     const itemAdded = document.querySelector('#itemAdded');
-    heartDiv.classList.toggle('liked');
-    itemAdded.classList.toggle('item-added-open');
-
     const popUp = document.querySelector('#pop-up-panel');
+    const currentItem = document.querySelector(`.item-${id}`);
+    heartDiv.classList.toggle('liked');
+
+    if (currentItem) {
+      return currentItem.outerHTML = '';
+    }
+
+    itemAdded.classList.toggle('item-added-open');
 
     const popUpElements = [
       {
         name: 'popUpCard',
         type: 'div',
-        classes: ['pop-up-card'],
+        classes: [`item-${id}`, 'pop-up-card'],
       },
       {
         name: 'popUpImage',
