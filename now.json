@@ -43,6 +43,10 @@
       "use": "@now/static"
     },
     {
+      "src": "/liked-card/LikedCard.js",
+      "use": "@now/static"
+    },
+    {
       "src": "/home/index.js",
       "use": "@now/static"
     }
