@@ -184,10 +184,18 @@ function setInitialSearch(element, searchTerm) {
   return null;
 }
 
+
 function setInitialDates(element, date, date2) {
-  console.log(element, date, date2);
+  const months = [
+    'jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec',
+  ];
   const el = element;
-  el.textContent = date;
+  const dateArr = date.split('-');
+  const dateArr2 = date2.split('-');
+  if (!date || !date2) {
+    el.textContent = 'date';
+  }
+  el.textContent = `${dateArr[2]} ${months[Number(dateArr[1] - 1)]} - ${dateArr2[2]} ${months[Number(dateArr2[1] - 1)]}`;
 }
 
 function createElementsAndRenderToDom(data, searchTerm) {
@@ -216,7 +224,7 @@ function createElementsAndRenderToDom(data, searchTerm) {
   const searchBox = document.querySelector('#searchInput');
   const dateBox = document.querySelector('#dateBox');
   const queryJSON = queryStringToJSON(document.location.search);
-
+  console.log(queryJSON);
   const parsedQuery = queryJSON.term;
 
   setInitialSearch(searchBox, parsedQuery);
