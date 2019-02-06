@@ -161,8 +161,9 @@ function createElements(data, searchTerm) {
   const searchTermExists = searchTerm === 'please enter a search term';
   const headerText = searchTermExists ? 'You did not enter a search term' : `Explore ${formattedSearchTerm}`;
 
-  const exploreCards = createExploreCards(data);
-  const productCards = filterData(data, searchTerm).map(each => makeCards(each));
+  const filteredSearchResults = filterData(data, searchTerm);
+  const exploreCards = createExploreCards(filteredSearchResults);
+  const productCards = filteredSearchResults.map(each => makeCards(each));
 
   return {
     headerText,
@@ -214,6 +215,7 @@ function createElementsAndRenderToDom(data, searchTerm) {
 
   searchBox.addEventListener('change', (e) => {
     const { value } = e.target;
+    searchBox.setAttribute('value', value);
     createElementsAndRenderToDom(data, value);
   });
 }(searchData));

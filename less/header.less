@@ -1,42 +1,55 @@
 .banner {
-    z-index: 80;
+    z-index: 100;
     height: 80px;
     width: 100%;
     .flex(flex-start);
 
-    .logo {
-        .flex();
+    .logo-section {
         z-index: 100;
-        margin-left: 3%;
-        height: 50px;
-        width: 50px;
-        color: #FF5A5F;
-        font-size: 40px;
-        border-radius: 50%;
-        font-family: 'Courgette', cursive;
-        text-decoration: none;
+        display: flex;
+        .logo {
+            .flex();
+            z-index: 100;
+            margin-left: 3%;
+            height: 50px;
+            width: 50px;
+            color: #FF5A5F;
+            font-size: 40px;
+            border-radius: 50%;
+            font-family: 'Courgette', cursive;
+            text-decoration: none;
+        }
+    
+        #drop-down-arrow {
+            z-index: 100;
+            background: none;
+            border: none;
+            outline: none;
+            
+            .arrow {
+                color: rgb(200,200,200);
+                transition: transform 420ms;
+            }
+    
+            .open {
+                color: #000;
+                transform: rotate(180deg);
+            }
+    
+            @media (min-width: 900px) {
+                display: none;
+            }
+        }
+
+        @media(min-width: 600px) {
+            margin-left: 3%;
+        }
     }
 
-    #drop-down-arrow {
-        z-index: 100;
-        background: none;
-        border: none;
-        outline: none;
-        
-        .arrow {
-            color: rgb(200,200,200);
-            transition: transform 420ms;
-        }
-
-        .open {
-            color: #000;
-            transform: rotate(180deg);
-        }
-
-        @media (min-width: 900px) {
-            display: none;
-        }
+    .logo-section-open {
+        position: fixed;
     }
+
 
     .menu{
         z-index: 80;
@@ -45,7 +58,7 @@
         top:0;
         width: 100%;
         height: 100vh;
-        transform: translateY(calc(-100% - 80px));
+        transform: translateY(-200%);
         transition: transform 250ms;
 
         .menu-items {
@@ -110,5 +123,4 @@
             }
         }
     }
-    
 }
