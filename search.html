@@ -14,11 +14,14 @@
       href="https://fonts.googleapis.com/icon?family=Material+Icons"
       rel="stylesheet"
     />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous" />
+    <link rel="icon" href="https://res.cloudinary.com/dgdniqfi9/image/upload/v1549393248/lambda/Screenshot_2019-02-05_at_18.59.03.png" />
     <script src="header/Header.js" async></script>
     <script src="explore-card/ExploreCard.js" async></script>
     <script src="product-card/ProductCard.js" async></script>
     <script src="search/products.js" async></script>
     <script src="search/searchResults.js" async></script>
+    <script src="liked-card/LikedCard.js" async></script>
     <title>Hire Products</title>
   </head>
   <body>
@@ -68,6 +71,21 @@
         </div>
       </nav>
     </header>
+
+    <header class="search-info">
+        <button id="dateBox">
+        </button>
+    </header>
+
+    <section  id="itemAdded" class="item-added-overlay">
+      <div id="pop-up-panel" class="item-added">
+        <button id="closeItem"><i class="material-icons">close</i></button>
+        <div class="pop-up-heading">
+          <h1 class="heading">Saved to list</h1>
+        </div>
+        <div id="pop-up-items"></div> 
+      </div>
+    </section>
 
     <section class="explore-results">
       <h2 id="exploreHeader" class="heading">Explore</h2>

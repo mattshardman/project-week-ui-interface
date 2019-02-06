@@ -14,16 +14,19 @@
       href="https://fonts.googleapis.com/icon?family=Material+Icons"
       rel="stylesheet"
     />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous" />
     <link rel="icon" href="https://res.cloudinary.com/dgdniqfi9/image/upload/v1549393248/lambda/Screenshot_2019-02-05_at_18.59.03.png" />
     <script src="header/Header.js" async></script>
     <script src="explore-card/ExploreCard.js" async></script>
     <script src="carousel/Carousel.js" async></script>
     <script src="product-card/ProductCard.js" async></script>
     <script src="search/search.js" async></script>
+    <script src="home/index.js" async></script>
     <title>Hire Products</title>
   </head>
   <body>
     <header class="banner">
+      <div class="logo-section">
       <a href="/" class="logo">
         <div >H</div>
       </a>
@@ -32,6 +35,7 @@
           expand_more
         </i>
       </button>
+    </div>
       <nav class="menu">
         <div class="menu-items">
           <a class="menu-item" href="">Home</a>
@@ -56,7 +60,7 @@
         </div>
       </nav>
     </header>
-
+    
     <section class="hero">
       <div class="bg">
         <h1 class="strap-line">Hire unique products at a moments notice.</h1>
@@ -78,11 +82,11 @@
           <div class="input-dates">
             <div class="label">
               <small>FROM</small>
-              <input type="date" class="input input-from" />
+              <input id="dateFrom" type="date" class="input input-from" />
             </div>
             <div class="label">
               <small>TO</small>
-              <input type="date" class="input input-to" />
+              <input id="dateTo" type="date" class="input input-to" />
             </div>
           </div>
           <div class="label">
