@@ -184,6 +184,12 @@ function setInitialSearch(element, searchTerm) {
   return null;
 }
 
+function setInitialDates(element, date, date2) {
+  console.log(element, date, date2);
+  const el = element;
+  el.textContent = date;
+}
+
 function createElementsAndRenderToDom(data, searchTerm) {
   const header = document.querySelector('#exploreHeader');
   const renderResults = (elements, id) => {
@@ -208,11 +214,13 @@ function createElementsAndRenderToDom(data, searchTerm) {
 
 (function initialRender(data) {
   const searchBox = document.querySelector('#searchInput');
+  const dateBox = document.querySelector('#dateBox');
   const queryJSON = queryStringToJSON(document.location.search);
 
   const parsedQuery = queryJSON.term;
-  
+
   setInitialSearch(searchBox, parsedQuery);
+  setInitialDates(dateBox, queryJSON.dateFrom, queryJSON.dateTo);
   createElementsAndRenderToDom(data, parsedQuery);
 }(searchData));
 
