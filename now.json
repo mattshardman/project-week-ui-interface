@@ -31,6 +31,10 @@
       "use": "@now/static"
     },
     {
+      "src": "/search/products.js",
+      "use": "@now/static"
+    },
+    {
       "src": "/search/search.js",
       "use": "@now/static"
     },
