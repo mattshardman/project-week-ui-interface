@@ -14,13 +14,19 @@
       href="https://fonts.googleapis.com/icon?family=Material+Icons"
       rel="stylesheet"
     />
+    <link rel="icon" href="https://res.cloudinary.com/dgdniqfi9/image/upload/v1549393248/lambda/Screenshot_2019-02-05_at_18.59.03.png" />
     <script src="header/Header.js" async></script>
     <script src="explore-card/ExploreCard.js" async></script>
-    <title>Document</title>
+    <script src="carousel/Carousel.js" async></script>
+    <script src="product-card/ProductCard.js" async></script>
+    <script src="search/search.js" async></script>
+    <title>Hire Products</title>
   </head>
   <body>
     <header class="banner">
-      <div class="logo">T</div>
+      <a href="/" class="logo">
+        <div >H</div>
+      </a>
       <button id="drop-down-arrow">
         <i class="material-icons arrow">
           expand_more
@@ -53,38 +59,85 @@
 
     <section class="hero">
       <div class="bg">
-        <h1 class="heading">Hire unique products at a moments notice.</h1>
+        <h1 class="strap-line">Hire unique products at a moments notice.</h1>
       </div>
       <div class="input-section">
         <h1 class="heading-desktop">
           Hire unique products at a moments notice.
         </h1>
-        <div class="label">
-          <small>WHAT</small>
-          <input type="text" class="input" placeholder="Anything" />
-        </div>
-        <div class="input-dates">
+        <form action="">
           <div class="label">
-            <small>FROM</small>
-            <input type="date" class="input input-from" />
+            <small>WHAT</small>
+            <input
+              type="text"
+              class="input"
+              placeholder="Anything"
+              id="search"
+            />
+          </div>
+          <div class="input-dates">
+            <div class="label">
+              <small>FROM</small>
+              <input type="date" class="input input-from" />
+            </div>
+            <div class="label">
+              <small>TO</small>
+              <input type="date" class="input input-to" />
+            </div>
           </div>
           <div class="label">
-            <small>TO</small>
-            <input type="date" class="input input-to" />
+            <button id="search-button" type="submit">Search</button>
           </div>
-        </div>
-        <div class="label">
-          <button id="search-button">Search</button>
-        </div>
+        </form>
       </div>
     </section>
 
     <section class="explore">
       <h2 class="heading">Explore Categories</h2>
       <div class="explore-tiles">
-        <div class="tile-wrapper">
+        <div class="tile-wrapper"></div>
+      </div>
+    </section>
+
+    <section class="introducing-plus">
+      <h2 class="heading">Introducing Hire Plus</h2>
+      <p class="sub-heading">Get the best deals on the best products.</p>
+      <div class="info-card-wrapper">
+        <div class="info-card">
+          <div class="info-card-content">
+            <h1>H plus</h1>
+            <button class="info-button">
+              EXPLORE PRODUCTS&nbsp;&nbsp;
+              <i class="material-icons">arrow_forward_ios</i>
+            </button>
+          </div>
         </div>
       </div>
+    </section>
+
+    <section class="recommended-section">
+      <h2 class="heading">Recommended for you</h2>
+      <div class="button-wrapper">
+        <button id="left-btn" class="btn left-btn">
+          <i class="material-icons">
+            arrow_back
+          </i>
+        </button>
+        <div class="carousel-wrapper">
+          <div class="carousel"></div>
+        </div>
+        <button id="right-btn" class="btn right-btn">
+          <i class="material-icons">
+            arrow_forward
+          </i>
+        </button>
+      </div>
+    </section>
+
+    <section class="products-section">
+      <h2 class="heading">Top-rated products</h2>
+      <p class="sub-heading">Rent the products our users love most</p>
+      <div id="productCards" class="cards-wrapper"></div>
     </section>
   </body>
 </html>

@@ -1,6 +1,5 @@
 .hero {
    width: 100%;
-   height: 100%;
     .bg {
         position: absolute;
         .flex(flex-end; center; column);
@@ -10,9 +9,14 @@
         background-image: url("https://images.unsplash.com/photo-1514043454212-14c181f46583?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2089&q=80");
         background-size: cover;
         background-position: center;
+        transition: height 420ms;
 
         .heading-desktop {
             display: none;
+        }
+
+        @media (min-width: 600px) {
+            height: 400px;
         }
 
         @media (min-width: 900px) {
@@ -26,16 +30,18 @@
             left: 0;
             height: 100%;
             width: 100%;
-            background: linear-gradient(180deg, rgba(0,0,0,.1), rgba(0,0,0,.7));
+            background: linear-gradient(180deg, rgba(0,0,0,.1), rgba(0,0,0,.75));
         }
 
-        .heading {
+        .strap-line {
             z-index: 20;
             font-size: 30px;
             color: #fff;
             margin: 3% 20px;
             font-weight: 700;
             line-height: 1.2;
+            text-align: left;
+            text-shadow: 0 4px 10px rgba(0,0,0,0.4);
 
             @media (min-width: 900px) {
                 display: none;
@@ -48,9 +54,14 @@
         width: 100%;
         background: #fff;
         padding: 20px;
+        transition: margin-top 420ms;
 
         .heading-desktop {
             display: none;
+        }
+
+        @media(min-width: 600px) {
+            margin-top: 320px;
         }
 
         @media(min-width: 900px) {
@@ -78,12 +89,7 @@
             border: 1px #eaeaea solid;
             border-radius: 3px;
             box-shadow: none;
-            transition: border 420ms;
-
-            &:active, &:focus {
-                border: 1px #00A699 solid;
-                outline: none;
-            }
+            transition: border 420ms; 
         }
 
         .label {
@@ -107,13 +113,20 @@
                 width: 100%;
                 border-radius: 3px 0 0 3px;
                 color: rgba(0,0,0,0.5);
+                border-right: 0.5px solid #eaeaea; 
             }
 
             .input-to {
                 width: 100%;
                 border-radius: 0px 3px 3px 0px;
                 color: rgba(0,0,0,0.5);
-            }
+                border-left: 0px solid #eaeaea;
+            }        
+        }
+
+        .input:focus, .input:active {
+            border: 1px #00A699 solid;               
+            outline: none;
         }
 
         #search-button {

@@ -7,11 +7,39 @@
       "use": "@now/static"
     },
     {
+      "src": "search.html",
+      "use": "@now/static"
+    },
+    {
       "src": "/css/index.css",
       "use": "@now/static"
     },
     {
       "src": "/header/Header.js",
+      "use": "@now/static"
+    },
+    {
+      "src": "/explore-card/ExploreCard.js",
+      "use": "@now/static"
+    },
+    {
+      "src": "/carousel/Carousel.js",
+      "use": "@now/static"
+    },
+    {
+      "src": "/product-card/ProductCard.js",
+      "use": "@now/static"
+    },
+    {
+      "src": "/search/products.js",
+      "use": "@now/static"
+    },
+    {
+      "src": "/search/search.js",
+      "use": "@now/static"
+    },
+    {
+      "src": "/search/searchResults.js",
       "use": "@now/static"
     }
   ]
