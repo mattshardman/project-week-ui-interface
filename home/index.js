@@ -59,11 +59,11 @@ const data = [
 ];
 
 const exploreCardMakerFunc = ExploreCardMaker; //eslint-disable-line
-const cardMakerFunc = ProductCardMaker;//eslint-disable-line
+const CardMakerFunc = ProductCardMaker;//eslint-disable-line
 
 const exploreTileSection = document.querySelector('.tile-wrapper');
 exploreTilesData.forEach(tile => exploreTileSection.appendChild(exploreCardMakerFunc(tile)));
 
 // render-product cards
 const productCards = document.querySelector('#productCards');
-data.forEach(each => productCards.appendChild(cardMakerFunc(each)));
+data.forEach(each => productCards.appendChild(new CardMakerFunc(each).render()));

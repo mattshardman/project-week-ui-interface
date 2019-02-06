@@ -26,116 +26,23 @@ function ProductElementMaker(arr) {
   return result;
 }
 
-function ProductCardMaker({ //eslint-disable-line
-  id, imgSrc, type, product, description, numberOfRatings, users,
-}) {
-  const elements = [
-    {
-      name: 'card',
-      type: 'div',
-      classes: ['product-card'],
-    },
-    {
-      name: 'img',
-      type: 'div',
-      classes: ['img'],
-      styles: [['backgroundImage', `url("${imgSrc}")`]],
-    },
-    {
-      name: 'heartDiv',
-      type: 'button',
-      classes: ['heart'],
-    },
-    {
-      name: 'heart',
-      type: 'i',
-      classes: ['far', 'fa-heart'],
-    },
-    {
-      name: 'productInfo',
-      type: 'div',
-      classes: ['product-info'],
-    },
-    {
-      name: 'rating',
-      type: 'div',
-      classes: ['rating'],
-    },
-    {
-      name: 'ratingNum',
-      type: 'span',
-      textContent: numberOfRatings,
-    },
-    {
-      name: 'stars',
-      type: 'div',
-      classes: ['stars'],
-    },
-    {
-      name: 'userNumber',
-      type: 'span',
-      classes: ['user-num'],
-      textContent: `${users} ratings`,
-    },
-  ];
-
-  const {
-    card,
-    img,
-    heartDiv,
-    heart,
-    productInfo,
-    rating,
-    ratingNum,
-    stars,
-    userNumber,
-  } = ProductElementMaker(elements);
-
-  [
-    { elType: 'h3', text: type },
-    { elType: 'h2', text: product },
-    { elType: 'p', text: description },
-  ].forEach(({ elType, text }) => {
-    const { el } = ProductElementMaker([{ name: 'el', type: elType, textContent: text }]);
-    productInfo.appendChild(el);
-  });
-
-  [...Array(numberOfRatings)].forEach(() => {
-    const { star } = ProductElementMaker([
-      {
-        name: 'star',
-        type: 'i',
-        classes: ['material-icons'],
-        textContent: 'star',
-      },
-    ]);
-    stars.appendChild(star);
-  });
-
-  heartDiv.appendChild(heart);
-  img.appendChild(heartDiv);
-
-  rating.appendChild(ratingNum);
-  rating.appendChild(stars);
-  rating.appendChild(userNumber);
-
-  productInfo.appendChild(rating);
-
-  card.appendChild(img);
-  card.appendChild(productInfo);
-
-  // event listener for opening popup
-
-  card.addEventListener('click', () => {
+class PopUpMaker {
+  constructor({
+    id, heart, imgSrc, type, product, description, rating,
+  }) {
     const itemAdded = document.querySelector('#itemAdded');
-    const popUp = document.querySelector('#pop-up-panel');
+
     const currentItem = document.querySelector(`.item-${id}`);
-    heartDiv.classList.toggle('liked');
 
     if (currentItem) {
-      return currentItem.outerHTML = '';
+      heart.classList.remove('fas', 'liked');
+      heart.classList.add('far');
+      currentItem.outerHTML = '';
+      return null;
     }
 
+    heart.classList.remove('far');
+    heart.classList.add('fas', 'liked');
     itemAdded.classList.toggle('item-added-open');
 
     const popUpElements = [
@@ -171,8 +78,155 @@ function ProductCardMaker({ //eslint-disable-line
     popUpProductSection.appendChild(rating);
     popUpCard.appendChild(popUpImage);
     popUpCard.appendChild(popUpProductSection);
-    popUp.appendChild(popUpCard);
-  });
 
-  return card;
+    this.popUpCard = popUpCard;
+  }
+
+  render() {
+    return this.popUpCard;
+  }
+}
+
+class ProductCardMaker { //eslint-disable-line
+  constructor(obj) {
+    // data for creating elements
+    const elements = [
+      {
+        name: 'card',
+        type: 'div',
+        classes: ['product-card'],
+      },
+      {
+        name: 'img',
+        type: 'div',
+        classes: ['img'],
+        styles: [['backgroundImage', `url("${obj.imgSrc}")`]],
+      },
+      {
+        name: 'heartDiv',
+        type: 'button',
+        classes: ['heart'],
+      },
+      {
+        name: 'heart',
+        type: 'i',
+        classes: ['far', 'fa-heart'],
+      },
+      {
+        name: 'productInfo',
+        type: 'div',
+        classes: ['product-info'],
+      },
+      {
+        name: 'rating',
+        type: 'div',
+        classes: ['rating'],
+      },
+      {
+        name: 'ratingNum',
+        type: 'span',
+        textContent: obj.numberOfRatings,
+      },
+      {
+        name: 'stars',
+        type: 'div',
+        classes: ['stars'],
+      },
+      {
+        name: 'userNumber',
+        type: 'span',
+        classes: ['user-num'],
+        textContent: `${obj.users} ratings`,
+      },
+    ];
+
+    // elements created from data
+    this.data = { ...obj };
+    this.elements = ProductElementMaker(elements);
+
+    this.img = this.createImageComponent();
+    this.productInfo = this.createProductInfoSectionComponent();
+
+    const { card } = this.elements;
+    card.addEventListener('click', () => this.clickHandler());
+  }
+
+  createImageComponent() {
+    const {
+      img,
+      heartDiv,
+      heart,
+    } = this.elements;
+
+    heartDiv.appendChild(heart);
+    img.appendChild(heartDiv);
+    this.heart = heart;
+    return img;
+  }
+
+  createProductInfoSectionComponent() {
+    const {
+      productInfo,
+    } = this.elements;
+
+    const rating = this.createRatingComponent();
+
+    [
+      { elType: 'h3', text: this.data.type },
+      { elType: 'h2', text: this.data.product },
+      { elType: 'p', text: this.data.description },
+    ].forEach(({ elType, text }) => {
+      const { el } = ProductElementMaker([{ name: 'el', type: elType, textContent: text }]);
+      productInfo.appendChild(el);
+    });
+
+
+    productInfo.appendChild(rating);
+    return productInfo;
+  }
+
+  createRatingComponent() {
+    const {
+      rating, stars, ratingNum,
+      userNumber,
+    } = this.elements;
+
+    [...Array(this.data.numberOfRatings)].forEach(() => {
+      const { star } = ProductElementMaker([
+        {
+          name: 'star',
+          type: 'i',
+          classes: ['material-icons'],
+          textContent: 'star',
+        },
+      ]);
+      stars.appendChild(star);
+    });
+
+    rating.appendChild(ratingNum);
+    rating.appendChild(stars);
+    rating.appendChild(userNumber);
+
+    return rating;
+  }
+
+  clickHandler() {
+    const popUp = document.querySelector('#pop-up-panel');
+    const popUpCard = new PopUpMaker({
+      ...this.data,
+      ...this.elements,
+      heart: this.heart,
+    }).render();
+
+    if (popUpCard) {
+      popUp.appendChild(popUpCard);
+    }
+  }
+
+  render() {
+    const { card } = this.elements;
+    card.appendChild(this.img);
+    card.appendChild(this.productInfo);
+    return card;
+  }
 }

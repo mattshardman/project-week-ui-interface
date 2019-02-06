@@ -172,7 +172,7 @@ function createExploreCards(data) {
 }
 
 function createElements(data, searchTerm) {
-  const makeCards = ProductCardMaker; //eslint-disable-line
+  const MakeCards = ProductCardMaker; //eslint-disable-line
   const formattedSearchTerm = formatSearchTerm(searchTerm);
 
   const searchTermExists = searchTerm === 'please enter a search term';
@@ -180,7 +180,7 @@ function createElements(data, searchTerm) {
 
   const filteredSearchResults = filterData(data, searchTerm);
   const exploreCards = createExploreCards(filteredSearchResults);
-  const productCards = filteredSearchResults.map(each => makeCards(each));
+  const productCards = filteredSearchResults.map(each => new MakeCards(each).render());
 
   return {
     headerText,
