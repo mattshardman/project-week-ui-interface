@@ -1,42 +1,5 @@
-const data = [
-  {
-    imgSrc: 'https://images.unsplash.com/photo-1531297484001-80022131f5a1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1907&q=80',
-    type: 'LAPTOP',
-    product: 'A really good laptop',
-    description: 'What about it',
-    numberOfRatings: 3,
-    users: 47,
-  },
-  {
-    imgSrc: 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80',
-    type: 'HEADPHONES',
-    product: 'Some really good headphones',
-    description: 'What about it',
-    numberOfRatings: 4,
-    users: 20,
-  },
-  {
-    imgSrc: 'https://images.unsplash.com/photo-1507646227500-4d389b0012be?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1400&q=80',
-    type: 'VOICE SPEAKER',
-    product: 'A really good speaker',
-    description: 'What about it',
-    numberOfRatings: 5,
-    users: 180,
-  },
-  {
-    imgSrc: 'https://images.unsplash.com/photo-1486611367184-17759508999c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1566&q=80',
-    type: 'DRONE',
-    product: 'A really good drone',
-    description: 'What about it',
-    numberOfRatings: 2,
-    users: 80,
-  },
-];
-
-const productCards = document.querySelector('#productCards');
-
 function CardMaker({
-  imgSrc, type, product, description, numberOfRatings, users,
+  id, imgSrc, type, product, description, numberOfRatings, users,
 }) {
   const card = document.createElement('div');
   card.classList.add('product-card');
@@ -44,6 +7,15 @@ function CardMaker({
   const img = document.createElement('div');
   img.classList.add('img');
   img.style.backgroundImage = `url("${imgSrc}")`;
+
+  const heartDiv = document.createElement('button');
+  heartDiv.classList.add('heart');
+  const heart = document.createElement('i');
+  heart.classList.add('far', 'fa-heart');
+
+  heartDiv.appendChild(heart);
+  img.appendChild(heartDiv);
+
   card.appendChild(img);
 
   const productInfo = document.createElement('div');
@@ -76,7 +48,6 @@ function CardMaker({
     rating.appendChild(stars);
   });
 
-
   const userNumber = document.createElement('span');
   userNumber.classList.add('user-num');
   userNumber.textContent = users;
@@ -86,7 +57,10 @@ function CardMaker({
 
   card.appendChild(productInfo);
 
+  card.addEventListener('click', () => {
+    heartDiv.classList.toggle('liked');
+    console.log(id);
+  });
+
   return card;
 }
-
-data.forEach(each => productCards.appendChild(CardMaker(each)));

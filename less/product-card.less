@@ -29,12 +29,31 @@
   }
 
   .img {
+    position: relative;
     height: 60%;
     width: 100%;
     background-size: cover;
     background-position: center;
     border-radius: 3px;
     overflow: hidden;
+
+    .heart {
+      position: absolute;
+      background: none;
+      border: none;
+      z-index: 50;
+      top: 8px;
+      right: 6px;
+      height: 30px;
+      font-size: 22px;
+      color: #fff;
+      cursor: pointer;
+      outline: none;
+    }
+
+    .liked {
+      color: #ff5a5f;
+    }
   }
 
   .product-info {
