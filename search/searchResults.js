@@ -111,12 +111,18 @@ const allData = [
 
 const searchData = allData; //eslint-disable-line
 
-const parseQuery = query => JSON.parse(
-  `{"${decodeURI(query)
-    .replace(/"/g, '\\"')
-    .replace(/&/g, '","')
-    .replace(/=/g, '":"')}"}`,
-).term || false;
+function queryStringToJSON(queryString) {
+  if (queryString.indexOf('?') > -1) {
+    queryString = queryString.split('?')[1];
+  }
+  const pairs = queryString.split('&');
+  const result = {};
+  pairs.forEach((pair) => {
+    pair = pair.split('=');
+    result[pair[0]] = decodeURIComponent(pair[1] || '');
+  });
+  return result;
+}
 
 function formatSearchTerm(input) {
   const char0 = input.charAt().toUpperCase();
@@ -202,9 +208,10 @@ function createElementsAndRenderToDom(data, searchTerm) {
 
 (function initialRender(data) {
   const searchBox = document.querySelector('#searchInput');
-  const query = document.location.search.substring(1);
+  const queryJSON = queryStringToJSON(document.location.search);
 
-  const parsedQuery = parseQuery(query);
+  const parsedQuery = queryJSON.term;
+  
   setInitialSearch(searchBox, parsedQuery);
   createElementsAndRenderToDom(data, parsedQuery);
 }(searchData));
