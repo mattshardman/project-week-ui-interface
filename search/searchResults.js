@@ -109,7 +109,6 @@ const allData = [
   },
 ];
 
-
 const searchData = allData; //eslint-disable-line
 
 const parseQuery = query => JSON.parse(
