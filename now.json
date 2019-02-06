@@ -41,6 +41,10 @@
     {
       "src": "/search/searchResults.js",
       "use": "@now/static"
+    },
+    {
+      "src": "/home/index.js",
+      "use": "@now/static"
     }
   ]
 }

@@ -1,3 +1,5 @@
+//eslint-disable-line
+
 const exploreTilesData = [
   {
     title: 'Phones',
@@ -56,8 +58,8 @@ const data = [
   },
 ];
 
-const exploreCardMakerFunc = ExploreCardMaker;
-const cardMakerFunc = CardMaker;
+const exploreCardMakerFunc = ExploreCardMaker; //eslint-disable-line
+const cardMakerFunc = CardMaker;//eslint-disable-line
 
 const exploreTileSection = document.querySelector('.tile-wrapper');
 exploreTilesData.forEach(tile => exploreTileSection.appendChild(exploreCardMakerFunc(tile)));

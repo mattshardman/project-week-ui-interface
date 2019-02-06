@@ -172,7 +172,7 @@ function createExploreCards(data) {
 }
 
 function createElements(data, searchTerm) {
-  const makeCards = CardMaker; //eslint-disable-line
+  const makeCards = ProductCardMaker; //eslint-disable-line
   const formattedSearchTerm = formatSearchTerm(searchTerm);
 
   const searchTermExists = searchTerm === 'please enter a search term';
@@ -196,7 +196,6 @@ function setInitialSearch(element, searchTerm) {
   return null;
 }
 
-
 function setInitialDates(element, date, date2) {
   const months = [
     'jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec',
@@ -211,8 +210,7 @@ function setInitialDates(element, date, date2) {
   }
 }
 
-function createElementsAndRenderToDom(data, search) {
-  const searchTerm = search.toLowerCase();
+function createElementsAndRenderToDom(data, searchTerm) {
   const header = document.querySelector('#exploreHeader');
   const renderResults = (elements, id) => {
     const div = document.querySelector(id);
@@ -222,8 +220,10 @@ function createElementsAndRenderToDom(data, search) {
     }
   };
 
+  console.log(searchTerm);
   if (searchTerm) {
     const { headerText, exploreCards, productCards } = createElements(data, searchTerm);
+    console.log(headerText);
     header.textContent = headerText;
     renderResults(exploreCards, '.explore-tile-wrapper', searchTerm);
     renderResults(productCards, '#searchResults', searchTerm);
@@ -239,7 +239,6 @@ function createElementsAndRenderToDom(data, search) {
   const dateBox = document.querySelector('#dateBox');
   const queryJSON = queryStringToJSON(document.location.search);
   const parsedQuery = queryJSON.term;
-
   setInitialSearch(searchBox, parsedQuery);
   setInitialDates(dateBox, queryJSON.dateFrom, queryJSON.dateTo);
   createElementsAndRenderToDom(data, parsedQuery);
