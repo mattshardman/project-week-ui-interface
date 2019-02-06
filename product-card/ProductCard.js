@@ -27,7 +27,7 @@ function ProductElementMaker(arr) {
 }
 
 function ProductCardMaker({ //eslint-disable-line
-  imgSrc, type, product, description, numberOfRatings, users,
+  id, imgSrc, type, product, description, numberOfRatings, users,
 }) {
   const elements = [
     {
@@ -125,7 +125,14 @@ function ProductCardMaker({ //eslint-disable-line
   card.appendChild(productInfo);
 
   card.addEventListener('click', () => {
+    const itemAdded = document.querySelector('#itemAdded');
+    const thing = document.querySelector('.item-added');
     heartDiv.classList.toggle('liked');
+    itemAdded.classList.toggle('item-added-open');
+    const imgDiv = document.createElement('div');
+    imgDiv.style.backgroundImage = `url(${imgSrc})`;
+    imgDiv.classList.add('item-img');
+    thing.appendChild(imgDiv);
   });
 
   return card;
