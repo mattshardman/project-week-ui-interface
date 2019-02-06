@@ -9,7 +9,8 @@ function ProductElementMaker(arr) {
 
     if (styles) {
       styles.forEach((style) => {
-        el.style[style[0]] = style[1];
+        const [styleName, styleValue] = style;
+        el.style[styleName] = styleValue;
       });
     }
 
@@ -25,7 +26,7 @@ function ProductElementMaker(arr) {
   return result;
 }
 
-function ProductCardMaker({
+function ProductCardMaker({ //eslint-disable-line
   imgSrc, type, product, description, numberOfRatings, users,
 }) {
   const elements = [
@@ -91,9 +92,9 @@ function ProductCardMaker({
   } = ProductElementMaker(elements);
 
   [
-    { type: 'h3', text: type },
-    { type: 'h2', text: product },
-    { type: 'p', text: description },
+    { elType: 'h3', text: type },
+    { elType: 'h2', text: product },
+    { elType: 'p', text: description },
   ].forEach(({ elType, text }) => {
     const { el } = ProductElementMaker([{ name: 'el', type: elType, textContent: text }]);
     productInfo.appendChild(el);

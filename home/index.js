@@ -59,7 +59,7 @@ const data = [
 ];
 
 const exploreCardMakerFunc = ExploreCardMaker; //eslint-disable-line
-const cardMakerFunc = CardMaker;//eslint-disable-line
+const cardMakerFunc = ProductCardMaker;//eslint-disable-line
 
 const exploreTileSection = document.querySelector('.tile-wrapper');
 exploreTilesData.forEach(tile => exploreTileSection.appendChild(exploreCardMakerFunc(tile)));
