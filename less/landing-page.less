@@ -69,6 +69,7 @@
       background: #fff;
       padding: 20px;
       transition: margin-top 420ms;
+      width: 100%;
 
       .heading-desktop {
         display: none;
@@ -81,7 +82,7 @@
         box-shadow: 0 5px 40px rgba(0, 0, 0, 0.4);
 
         .heading-desktop {
-          color: #484848;
+          color: @dark-grey;
           display: block;
           line-height: 1.2;
           font-size: 32px;
@@ -95,7 +96,7 @@
         padding: 0 10px;
         height: 50px;
         background: #fff;
-        border: 1px #eaeaea solid;
+        border: 1px @light-grey solid;
         border-radius: 3px;
         box-shadow: none;
         transition: border 420ms;
@@ -106,7 +107,7 @@
         margin: 10px 0;
         display: flex;
         flex-direction: column;
-        color: #484848;
+        color: @dark-grey;
 
         small {
           font-weight: 700;
@@ -122,20 +123,20 @@
           width: 100%;
           border-radius: 3px 0 0 3px;
           color: rgba(0, 0, 0, 0.5);
-          border-right: 0.5px solid #eaeaea;
+          border-right: 0.5px solid @light-grey;
         }
 
         .input-to {
           width: 100%;
           border-radius: 0px 3px 3px 0px;
           color: rgba(0, 0, 0, 0.5);
-          border-left: 0px solid #eaeaea;
+          border-left: 0px solid @light-grey;
         }
       }
 
       .input:focus,
       .input:active {
-        border: 1px #00a699 solid;
+        border: 1px @green solid;
         outline: none;
       }
 
@@ -145,7 +146,7 @@
         font-size: 17px;
         font-weight: 500;
         color: #fff;
-        background: #ff5a5f;
+        background: @red;
         border: none;
         box-shadow: none;
         border-radius: 3px;

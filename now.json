@@ -19,15 +19,15 @@
       "use": "@now/static"
     },
     {
-      "src": "/explore-card/ExploreCard.js",
+      "src": "/components/explore-card/ExploreCard.js",
       "use": "@now/static"
     },
     {
-      "src": "/carousel/Carousel.js",
+      "src": "/components/carousel/Carousel.js",
       "use": "@now/static"
     },
     {
-      "src": "/product-card/ProductCard.js",
+      "src": "/components/product-card/ProductCard.js",
       "use": "@now/static"
     },
     {
@@ -49,6 +49,14 @@
     {
       "src": "/home/index.js",
       "use": "@now/static"
+    },
+    {
+      "src": "api/product-data/data.js",
+      "use": "@now/static"
+    },
+    {
+      "src": "api/product-data/index.js",
+      "use": "@now/node"
     }
   ]
 }
