@@ -1,11 +1,11 @@
-const allData = [
+const searchData = [
   {
     id: 1,
     imgSrc:
         'https://images.unsplash.com/photo-1531297484001-80022131f5a1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1907&q=80',
     type: 'LAPTOP',
     product: 'A really good laptop',
-    description: '£16/day',
+    description: 16,
     numberOfRatings: 3,
     users: 47,
   },
@@ -15,7 +15,7 @@ const allData = [
         'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80',
     type: 'HEADPHONES',
     product: 'Some really good headphones',
-    description: '£12/day',
+    description: 12,
     numberOfRatings: 4,
     users: 20,
   },
@@ -25,7 +25,7 @@ const allData = [
         'https://images.unsplash.com/photo-1507646227500-4d389b0012be?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1400&q=80',
     type: 'VOICE SPEAKER',
     product: 'A really good speaker',
-    description: '£22/day',
+    description: 22,
     numberOfRatings: 5,
     users: 180,
   },
@@ -35,7 +35,7 @@ const allData = [
         'https://images.unsplash.com/photo-1486611367184-17759508999c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1566&q=80',
     type: 'DRONE',
     product: 'A really good drone',
-    description: '£14/day',
+    description: 14,
     numberOfRatings: 2,
     users: 80,
   },
@@ -45,7 +45,7 @@ const allData = [
         'https://images.unsplash.com/photo-1521405924368-64c5b84bec60?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60',
     type: 'DRONE',
     product: 'A really good drone',
-    description: '£19/day',
+    description: 19,
     numberOfRatings: 3,
     users: 80,
   },
@@ -55,7 +55,7 @@ const allData = [
         'https://images.unsplash.com/photo-1506947411487-a56738267384?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60',
     type: 'DRONE',
     product: 'A really good drone',
-    description: '£9/day',
+    description: 9,
     numberOfRatings: 5,
     users: 80,
   },
@@ -65,7 +65,7 @@ const allData = [
         'https://images.unsplash.com/photo-1504890001746-a9a68eda46e2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60',
     type: 'DRONE',
     product: 'A really good drone',
-    description: '£27/day',
+    description: 27,
     numberOfRatings: 4,
     users: 80,
   },
@@ -75,7 +75,7 @@ const allData = [
         'https://images.unsplash.com/photo-1527977966376-1c8408f9f108?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60',
     type: 'DRONE',
     product: 'A really good drone',
-    description: '£30/day',
+    description: 30,
     numberOfRatings: 4,
     users: 80,
   },
@@ -85,7 +85,7 @@ const allData = [
         'https://images.unsplash.com/photo-1512790182412-b19e6d62bc39?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2089&q=80',
     type: 'CAMERA',
     product: 'A really good camera',
-    description: '£12/day',
+    description: 12,
     numberOfRatings: 4,
     users: 80,
   },
@@ -95,7 +95,7 @@ const allData = [
         'https://images.unsplash.com/photo-1520390138845-fd2d229dd553?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2089&q=80',
     type: 'CAMERA',
     product: 'A really good camera',
-    description: '£44/day',
+    description: 44,
     numberOfRatings: 3,
     users: 80,
   },
@@ -105,7 +105,7 @@ const allData = [
         'https://images.unsplash.com/photo-1519638831568-d9897f54ed69?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80',
     type: 'CAMERA',
     product: 'A really good camera',
-    description: '£9/day',
+    description: 9,
     numberOfRatings: 5,
     users: 80,
   },
@@ -115,22 +115,20 @@ const allData = [
         'https://images.unsplash.com/photo-1488684430052-f2d92fb178c2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1952&q=80',
     type: 'CAMERA',
     product: 'A really good camera',
-    description: '£10/day',
+    description: 10,
     numberOfRatings: 5,
     users: 80,
   },
 ];
 
-const searchData = allData; //eslint-disable-line
-
 function queryStringToJSON(queryString) {
   if (queryString.indexOf('?') > -1) {
-    queryString = queryString.split('?')[1];
+    queryString = queryString.split('?')[1]; //eslint-disable-line
   }
   const pairs = queryString.split('&');
   const result = {};
   pairs.forEach((pair) => {
-    pair = pair.split('=');
+    pair = pair.split('='); //eslint-disable-line
     result[pair[0]] = decodeURIComponent(pair[1] || '');
   });
   return result;
@@ -171,7 +169,7 @@ function createExploreCards(data) {
   return cards;
 }
 
-function createElements(data, searchTerm) {
+function createElements(data, searchTerm, numOfDays) {
   const MakeCards = ProductCardMaker; //eslint-disable-line
   const formattedSearchTerm = formatSearchTerm(searchTerm);
 
@@ -180,13 +178,21 @@ function createElements(data, searchTerm) {
 
   const filteredSearchResults = filterData(data, searchTerm);
   const exploreCards = createExploreCards(filteredSearchResults);
-  const productCards = filteredSearchResults.map(each => new MakeCards(each, true).render());
+  const productCards = filteredSearchResults
+    .map(each => new MakeCards(each, true, numOfDays).render());
 
   return {
     headerText,
     exploreCards,
     productCards,
   };
+}
+
+function findNumOfDays(date, date2) {
+  const d = new Date(date);
+  const d2 = new Date(date2);
+  const result = ((d2 - d) / 1000 / 60 / 60 / 24);
+  return result;
 }
 
 function setInitialSearch(element, searchTerm) {
@@ -203,6 +209,8 @@ function setInitialDates(element, date, date2) {
   const el = element;
   const dateArr = date.split('-');
   const dateArr2 = date2.split('-');
+
+
   if (!date || !date2) {
     el.textContent = 'Date';
   } else {
@@ -210,7 +218,7 @@ function setInitialDates(element, date, date2) {
   }
 }
 
-function createElementsAndRenderToDom(data, searchTerm) {
+function createElementsAndRenderToDom(data, searchTerm, numOfDays) {
   const header = document.querySelector('#exploreHeader');
   const renderResults = (elements, id) => {
     const div = document.querySelector(id);
@@ -221,7 +229,7 @@ function createElementsAndRenderToDom(data, searchTerm) {
   };
 
   if (searchTerm) {
-    const { headerText, exploreCards, productCards } = createElements(data, searchTerm);
+    const { headerText, exploreCards, productCards } = createElements(data, searchTerm, numOfDays);
     header.textContent = headerText;
     renderResults(exploreCards, '.explore-tile-wrapper', searchTerm);
     renderResults(productCards, '#searchResults', searchTerm);
@@ -237,9 +245,10 @@ function createElementsAndRenderToDom(data, searchTerm) {
   const dateBox = document.querySelector('#dateBox');
   const queryJSON = queryStringToJSON(document.location.search);
   const parsedQuery = queryJSON.term;
+  const numOfDays = findNumOfDays(queryJSON.dateFrom, queryJSON.dateTo);
   setInitialSearch(searchBox, parsedQuery);
   setInitialDates(dateBox, queryJSON.dateFrom, queryJSON.dateTo);
-  createElementsAndRenderToDom(data, parsedQuery.toLowerCase());
+  createElementsAndRenderToDom(data, parsedQuery.toLowerCase(), numOfDays);
 }(searchData));
 
 (function reRenderOnSearch(data) {

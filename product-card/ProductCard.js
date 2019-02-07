@@ -31,7 +31,6 @@ class PopUpMaker {
     id, heart, imgSrc, type, product, description, rating,
   }) {
     const itemAdded = document.querySelector('#itemAdded');
-
     const currentItem = document.querySelector(`.item-${id}`);
 
     if (currentItem) {
@@ -62,24 +61,40 @@ class PopUpMaker {
         type: 'div',
         classes: ['pop-up-product-section'],
       },
+      {
+        name: 'closeButton',
+        type: 'i',
+        classes: ['close-button', 'material-icons'],
+        textContent: 'close',
+      },
     ];
 
-    const { popUpCard, popUpImage, popUpProductSection } = ProductElementMaker(popUpElements);
+    const {
+      popUpCard, popUpImage, popUpProductSection, closeButton,
+    } = ProductElementMaker(popUpElements);
 
     [
       { elType: 'h3', text: type },
       { elType: 'h2', text: product },
-      { elType: 'p', text: description },
+      { elType: 'p', text: `£${description} per day` },
     ].forEach(({ elType, text }) => {
       const { el } = ProductElementMaker([{ name: 'el', type: elType, textContent: text }]);
       popUpProductSection.appendChild(el);
     });
 
     popUpProductSection.appendChild(rating);
+    popUpProductSection.appendChild(closeButton);
     popUpCard.appendChild(popUpImage);
     popUpCard.appendChild(popUpProductSection);
 
+
     this.popUpCard = popUpCard;
+
+    closeButton.addEventListener('click', () => {
+      heart.classList.remove('fas', 'liked');
+      heart.classList.add('far');
+      this.popUpCard.outerHTML = '';
+    });
   }
 
   render() {
@@ -88,7 +103,7 @@ class PopUpMaker {
 }
 
 class ProductCardMaker { //eslint-disable-line
-  constructor(obj, renderHeart) {
+  constructor(obj, renderHeart, numOfDays) {
     // data for creating elements
     const elements = [
       {
@@ -145,7 +160,7 @@ class ProductCardMaker { //eslint-disable-line
     this.elements = ProductElementMaker(elements);
 
     this.img = this.createImageComponent(renderHeart);
-    this.productInfo = this.createProductInfoSectionComponent();
+    this.productInfo = this.createProductInfoSectionComponent(numOfDays);
   }
 
   createImageComponent(renderHeart) {
@@ -164,7 +179,7 @@ class ProductCardMaker { //eslint-disable-line
     return img;
   }
 
-  createProductInfoSectionComponent() {
+  createProductInfoSectionComponent(numOfDays) {
     const {
       productInfo,
     } = this.elements;
@@ -174,12 +189,11 @@ class ProductCardMaker { //eslint-disable-line
     [
       { elType: 'h3', text: this.data.type },
       { elType: 'h2', text: this.data.product },
-      { elType: 'p', text: this.data.description },
+      { elType: 'p', text: `£${this.data.description} per day - £${this.data.description * numOfDays || this.data.description} total` },
     ].forEach(({ elType, text }) => {
       const { el } = ProductElementMaker([{ name: 'el', type: elType, textContent: text }]);
       productInfo.appendChild(el);
     });
-
 
     productInfo.appendChild(rating);
     return productInfo;
