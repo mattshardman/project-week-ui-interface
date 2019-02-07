@@ -57,14 +57,13 @@ function setInitialDates(element, date, date2) {
   const months = [
     'jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec',
   ];
+
   const el = element;
-  const dateArr = date.split('-');
-  const dateArr2 = date2.split('-');
-
-
   if (!date || !date2) {
     el.textContent = 'Date';
   } else {
+    const dateArr = date.split('-');
+    const dateArr2 = date2.split('-');
     el.textContent = `${dateArr[2]} ${months[Number(dateArr[1] - 1)]} - ${dateArr2[2]} ${months[Number(dateArr2[1] - 1)]}`;
   }
 }
@@ -98,7 +97,7 @@ function initialRender(data) {
   const searchForm = document.querySelector('#searchForm');
 
   const queryJSON = queryStringToJSON(document.location.search);
-  const parsedQuery = queryJSON.term;
+  const parsedQuery = queryJSON.term || '';
   const numOfDays = findNumOfDays(queryJSON.dateFrom, queryJSON.dateTo);
 
   setInitialSearch(searchInput, parsedQuery);

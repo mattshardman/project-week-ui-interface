@@ -1,5 +1,7 @@
+// from util/utilFunctions - gets product data from API
 const getData = getDataFunc; //eslint-disable-line
 
+// data from homepage "Explore category" tiles
 const exploreTilesData = [
   {
     title: 'Phones',
@@ -15,19 +17,51 @@ const exploreTilesData = [
   },
 ];
 
+/*
+  from components/explore-card/ExploreCard.js
+  returns explore card element for "Explore category" tiles
+  element returned has the following structure:
+    <div class="tile">
+      <div
+        class="img"
+        style="background-image: photo>
+      </div>
+      <div class="title">title</div>
+    </div>
+*/
 const exploreCardMakerFunc = ExploreCardMaker; //eslint-disable-line
+/*
+  from components/product-card/ProductCard.js
+  returns product card element for "Top Rated products section"
+  element returned has the following structure
+*/
 const CardMakerFunc = ProductCardMaker;//eslint-disable-line
 
+// select element to append explore tiles
 const exploreTileSection = document.querySelector('.tile-wrapper');
+
+/*
+  iterate through array, creates a new "explore card"
+  for each item in the array and appends
+*/
+
 exploreTilesData.forEach(tile => exploreTileSection.appendChild(exploreCardMakerFunc(tile)));
 
-// render-product cards
+// select element to append product tiles to
 const productCards = document.querySelector('#productCards');
+
+// calls get data async function to pull project data from api (returns an array)
 getData()
   .then((data) => {
     data
+      // filters array to find high rated products
       .filter(card => card.numberOfRatings > 3)
+      // slices array so only 8 elements are returned
       .slice(0, 8)
+      /*
+        iterate through array, creates a new "product card"
+        for each item in the array and appends
+      */
       .forEach((each) => {
         productCards.appendChild(new CardMakerFunc(each).render());
       });
