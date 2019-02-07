@@ -1,4 +1,4 @@
-//eslint-disable-line
+const getData = getDataFunc; //eslint-disable-line
 
 const exploreTilesData = [
   {
@@ -15,49 +15,6 @@ const exploreTilesData = [
   },
 ];
 
-const data = [
-  {
-    id: 1,
-    imgSrc:
-        'https://images.unsplash.com/photo-1531297484001-80022131f5a1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1907&q=80',
-    type: 'LAPTOP',
-    product: 'A really good laptop',
-    description: '£30/day',
-    numberOfRatings: 3,
-    users: 47,
-  },
-  {
-    id: 2,
-    imgSrc:
-        'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80',
-    type: 'HEADPHONES',
-    product: 'Some really good headphones',
-    description: '£22/day',
-    numberOfRatings: 4,
-    users: 20,
-  },
-  {
-    id: 3,
-    imgSrc:
-        'https://images.unsplash.com/photo-1507646227500-4d389b0012be?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1400&q=80',
-    type: 'VOICE SPEAKER',
-    product: 'A really good speaker',
-    description: '£9/day',
-    numberOfRatings: 5,
-    users: 180,
-  },
-  {
-    id: 4,
-    imgSrc:
-        'https://images.unsplash.com/photo-1486611367184-17759508999c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1566&q=80',
-    type: 'DRONE',
-    product: 'A really good drone',
-    description: '£12/day',
-    numberOfRatings: 2,
-    users: 80,
-  },
-];
-
 const exploreCardMakerFunc = ExploreCardMaker; //eslint-disable-line
 const CardMakerFunc = ProductCardMaker;//eslint-disable-line
 
@@ -66,4 +23,12 @@ exploreTilesData.forEach(tile => exploreTileSection.appendChild(exploreCardMaker
 
 // render-product cards
 const productCards = document.querySelector('#productCards');
-data.forEach(each => productCards.appendChild(new CardMakerFunc(each).render()));
+getData()
+  .then((data) => {
+    data
+      .filter(card => card.numberOfRatings > 3)
+      .slice(0, 8)
+      .forEach((each) => {
+        productCards.appendChild(new CardMakerFunc(each).render());
+      });
+  });

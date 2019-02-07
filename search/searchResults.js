@@ -1,40 +1,7 @@
-const getData = async () => {
-  // const url = 'http://localhost:4000/api/product-data';
-  const url = '/api/product-data';
-  const res = await axios.get(url); //eslint-disable-line
-  return res.data;
-};
-
-function queryStringToJSON(queryString) {
-  if (queryString.indexOf('?') > -1) {
-    queryString = queryString.split('?')[1]; //eslint-disable-line
-  }
-  const pairs = queryString.split('&');
-  const result = {};
-  pairs.forEach((pair) => {
-    pair = pair.split('='); //eslint-disable-line
-    result[pair[0]] = decodeURIComponent(pair[1] || '');
-  });
-  return result;
-}
-
-function formatSearchTerm(input) {
-  const char0 = input.charAt().toUpperCase();
-  const restOfString = input.toLowerCase().slice(1);
-  const s = restOfString.charAt(restOfString.length - 1) === 's' ? '' : 's';
-  const result = `${char0}${restOfString}${s}`;
-  return result;
-}
-
-const filterData = (data, searchTerm) => data.filter((each) => {
-  const type = each.type.split(' ').map(item => item.toLowerCase());
-  const match = searchTerm.includes(type) || type.includes(searchTerm);
-  if (match) {
-    return true;
-  }
-
-  return false;
-});
+const getData = getDataFunc; //eslint-disable-line
+const formatSearchTerm = formatSearchTermFunc; //eslint-disable-line
+const filterData = filterDataFunc; //eslint-disable-line
+const queryStringToJSON = queryStringToJSONFunc; //eslint-disable-line
 
 function createExploreCards(data) {
   const makeCards = ExploreCardMaker; //eslint-disable-line

@@ -1,5 +1,4 @@
-
-function ExploreCardMaker({ title, photo }) {
+function ExploreCardMaker({ title, photo }) { //eslint-disable-line
   const exploreTile = document.createElement('div');
   exploreTile.classList.add('tile');
 

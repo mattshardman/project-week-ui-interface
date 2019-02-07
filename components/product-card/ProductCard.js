@@ -1,30 +1,4 @@
-function ProductElementMaker(arr) {
-  const result = arr.reduce((acc, {
-    name, type, classes, styles, textContent,
-  }) => {
-    const el = document.createElement(type);
-    if (classes) {
-      classes.forEach(className => el.classList.add(className));
-    }
-
-    if (styles) {
-      styles.forEach((style) => {
-        const [styleName, styleValue] = style;
-        el.style[styleName] = styleValue;
-      });
-    }
-
-    if (textContent) {
-      el.textContent = textContent;
-    }
-    return {
-      ...acc,
-      [name]: el,
-    };
-  }, {});
-
-  return result;
-}
+const ProductElementMaker = ProductElementMakerFunc; //eslint-disable-line
 
 class PopUpMaker {
   constructor({
