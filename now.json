@@ -49,6 +49,14 @@
     {
       "src": "/home/index.js",
       "use": "@now/static"
+    },
+    {
+      "src": "api/product-data/data.js",
+      "use": "@now/static"
+    },
+    {
+      "src": "api/product-data/index.js",
+      "use": "@now/node"
     }
   ]
 }
