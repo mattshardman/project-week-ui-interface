@@ -88,7 +88,7 @@ class PopUpMaker {
 }
 
 class ProductCardMaker { //eslint-disable-line
-  constructor(obj) {
+  constructor(obj, renderHeart) {
     // data for creating elements
     const elements = [
       {
@@ -140,27 +140,27 @@ class ProductCardMaker { //eslint-disable-line
       },
     ];
 
-    // elements created from data
     this.data = { ...obj };
+    // elements created from data
     this.elements = ProductElementMaker(elements);
 
-    this.img = this.createImageComponent();
+    this.img = this.createImageComponent(renderHeart);
     this.productInfo = this.createProductInfoSectionComponent();
-
-    const { card } = this.elements;
-    card.addEventListener('click', () => this.clickHandler());
   }
 
-  createImageComponent() {
+  createImageComponent(renderHeart) {
     const {
       img,
       heartDiv,
       heart,
     } = this.elements;
 
-    heartDiv.appendChild(heart);
-    img.appendChild(heartDiv);
-    this.heart = heart;
+    if (renderHeart) {
+      heartDiv.appendChild(heart);
+      img.appendChild(heartDiv);
+    }
+
+    heartDiv.addEventListener('click', () => this.clickHandler(heart));
     return img;
   }
 
@@ -210,12 +210,12 @@ class ProductCardMaker { //eslint-disable-line
     return rating;
   }
 
-  clickHandler() {
+  clickHandler(heart) {
     const popUp = document.querySelector('#pop-up-panel');
     const popUpCard = new PopUpMaker({
       ...this.data,
       ...this.elements,
-      heart: this.heart,
+      heart,
     }).render();
 
     if (popUpCard) {

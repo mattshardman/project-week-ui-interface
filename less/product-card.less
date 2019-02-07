@@ -16,16 +16,18 @@
 
 .product-card {
   width: 47%;
-  height: 250px;
+  height: 240px;
   margin: 10px 0;
-  transition: width 420ms;
+  transition: width 420ms, height 420ms;
 
   @media (min-width: 600px) {
-    width: 30%;
+    width: 32%;
+    height: 280px;
   }
 
   @media (min-width: 900px) {
-    width: 22%;
+    width: 24%;
+    height: 320px;
   }
 
   .img {
@@ -36,6 +38,15 @@
     background-position: center;
     border-radius: 3px;
     overflow: hidden;
+    transition: height 420ms;
+
+    @media (min-width: 600px) {
+      height: 65%;
+    }
+  
+    @media (min-width: 900px) {
+      height: 70%;
+    }
 
     .heart {
       position: absolute;
@@ -60,6 +71,15 @@
     .flex(space-evenly; flex-start; column;);
     height: 40%;
     padding: 10px 0;
+    transition: height 420ms;
+
+    @media (min-width: 600px) {
+      height: 35%;
+    }
+  
+    @media (min-width: 900px) {
+      height: 30%;
+    }
 
     h3 {
       font-size: 10px;
@@ -95,6 +115,10 @@
       color: #00a699;
       width: 100%;
       .flex(space-between;);
+
+      @media (min-width: 900px) {
+        width: 70%;
+      }
 
       .stars {
         .flex(flex-start;);

@@ -1,5 +1,4 @@
 
-
 function ExploreCardMaker({ title, photo }) {
   const exploreTile = document.createElement('div');
   exploreTile.classList.add('tile');

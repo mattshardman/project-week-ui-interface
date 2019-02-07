@@ -180,7 +180,7 @@ function createElements(data, searchTerm) {
 
   const filteredSearchResults = filterData(data, searchTerm);
   const exploreCards = createExploreCards(filteredSearchResults);
-  const productCards = filteredSearchResults.map(each => new MakeCards(each).render());
+  const productCards = filteredSearchResults.map(each => new MakeCards(each, true).render());
 
   return {
     headerText,
@@ -239,15 +239,21 @@ function createElementsAndRenderToDom(data, searchTerm) {
   const parsedQuery = queryJSON.term;
   setInitialSearch(searchBox, parsedQuery);
   setInitialDates(dateBox, queryJSON.dateFrom, queryJSON.dateTo);
-  createElementsAndRenderToDom(data, parsedQuery);
+  createElementsAndRenderToDom(data, parsedQuery.toLowerCase());
 }(searchData));
 
 (function reRenderOnSearch(data) {
   const searchBox = document.querySelector('#searchInput');
+  const searchForm = document.querySelector('#searchForm');
 
-  searchBox.addEventListener('change', (e) => {
-    const { value } = e.target;
-    searchBox.setAttribute('value', value);
-    createElementsAndRenderToDom(data, value);
+  searchForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const { value } = searchBox;
+    createElementsAndRenderToDom(data, value.toLowerCase());
   });
+  // searchBox.addEventListener('change', (e) => {
+  //   const { value } = e.target;
+  //   searchBox.setAttribute('value', value);
+  //   createElementsAndRenderToDom(data, value);
+  // });
 }(searchData));
