@@ -243,12 +243,12 @@ function createElementsAndRenderToDom(data, searchTerm) {
 }(searchData));
 
 (function reRenderOnSearch(data) {
-  const searchBox = document.querySelector('#searchInput');
+  const searchInput = document.querySelector('#searchInput');
   const searchForm = document.querySelector('#searchForm');
 
   searchForm.addEventListener('submit', (e) => {
     e.preventDefault();
-    const { value } = searchBox;
+    const { value } = searchInput;
     createElementsAndRenderToDom(data, value.toLowerCase());
   });
   // searchBox.addEventListener('change', (e) => {
