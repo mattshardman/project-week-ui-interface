@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "alias": "rentstuff",
+  "alias": "airproducts",
   "builds": [
     {
       "src": "index.html",
@@ -43,7 +43,7 @@
       "use": "@now/static"
     },
     {
-      "src": "/liked-card/LikedCard.js",
+      "src": "components/pop-up/PopUp.js",
       "use": "@now/static"
     },
     {
@@ -51,9 +51,14 @@
       "use": "@now/static"
     },
     {
+      "src": "utils/utilFunctions.js",
+      "use": "@now/static"
+    },
+    {
       "src": "api/product-data/data.js",
       "use": "@now/static"
     },
+    
     {
       "src": "api/product-data/index.js",
       "use": "@now/node"

@@ -6,14 +6,17 @@ const exploreTilesData = [
   {
     title: 'Phones',
     photo: 'https://images.unsplash.com/photo-1522125670776-3c7abb882bc2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80',
+    href: 'search.html?term=phones',
   },
   {
     title: 'Laptops',
     photo: 'https://images.unsplash.com/photo-1516387938699-a93567ec168e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1951&q=80',
+    href: 'search.html?term=laptops',
   },
   {
     title: 'Cameras',
     photo: 'https://images.unsplash.com/photo-1520390138845-fd2d229dd553?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2089&q=80',
+    href: 'search.html?term=cameras',
   },
 ];
 

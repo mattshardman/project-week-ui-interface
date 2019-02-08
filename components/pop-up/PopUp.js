@@ -1,11 +1,3 @@
-const closeItem = document.querySelector('#closeItem');
-
-closeItem.addEventListener('click', () => {
-  const itemAdded = document.querySelector('#itemAdded');
-  itemAdded.classList.toggle('item-added-open');
-});
-
-
 class PopUpElementMaker { //eslint-disable-line
   constructor(obj) {
     this.ProductElementMaker = ProductElementMakerFunc; //eslint-disable-line
@@ -13,12 +5,12 @@ class PopUpElementMaker { //eslint-disable-line
     this.data = { ...obj };
 
     const itemAdded = document.querySelector('#itemAdded');
-    const currentItem = document.querySelector(`.item-${this.data.id}`);
+    this.currentItem = document.querySelector(`.item-${this.data.id}`);
 
-    if (currentItem) {
+    if (this.currentItem) {
       this.data.heart.classList.remove('fas', 'liked');
       this.data.heart.classList.add('far');
-      currentItem.outerHTML = '';
+      this.currentItem.outerHTML = '';
       return null;
     }
 
@@ -81,6 +73,9 @@ class PopUpElementMaker { //eslint-disable-line
   }
 
   render() {
+    if (this.currentItem) {
+      return null;
+    }
     this.popUpProductSection.appendChild(this.data.rating);
     this.popUpProductSection.appendChild(this.closeButton);
     this.popUpCard.appendChild(this.popUpImage);

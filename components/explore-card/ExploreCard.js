@@ -1,7 +1,12 @@
 const makeElements = ProductElementMakerFunc; //eslint-disable-line
 
-function ExploreCardMaker({ title, photo }) { //eslint-disable-line
+function ExploreCardMaker({ title, photo, href }) { //eslint-disable-line
   const elements = [
+    {
+      name: 'a',
+      type: 'a',
+      classes: ['explore-tile-a'],
+    },
     {
       name: 'exploreTile',
       type: 'div',
@@ -22,10 +27,15 @@ function ExploreCardMaker({ title, photo }) { //eslint-disable-line
 
   ];
 
-  const { exploreTile, imgSection, textSection } = makeElements(elements);
+  const {
+    a, exploreTile, imgSection, textSection,
+  } = makeElements(elements);
 
+  a.setAttribute('href', href);
   exploreTile.appendChild(imgSection);
   exploreTile.appendChild(textSection);
 
-  return exploreTile;
+  a.appendChild(exploreTile);
+
+  return a;
 }

@@ -1,6 +1,6 @@
 const getDataFunc = async () => { //eslint-disable-line
-  const url = 'http://localhost:4000/api/product-data';
-  // const url = '/api/product-data';
+  // const url = 'http://localhost:4000/api/product-data';
+  const url = '/api/product-data';
     const res = await axios.get(url); //eslint-disable-line
   return res.data;
 };
