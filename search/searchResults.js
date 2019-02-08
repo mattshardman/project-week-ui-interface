@@ -1,187 +1,48 @@
-const allData = [
-  {
-    id: 1,
-    imgSrc:
-        'https://images.unsplash.com/photo-1531297484001-80022131f5a1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1907&q=80',
-    type: 'LAPTOP',
-    product: 'A really good laptop',
-    description: '£16/day',
-    numberOfRatings: 3,
-    users: 47,
-  },
-  {
-    id: 2,
-    imgSrc:
-        'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80',
-    type: 'HEADPHONES',
-    product: 'Some really good headphones',
-    description: '£12/day',
-    numberOfRatings: 4,
-    users: 20,
-  },
-  {
-    id: 3,
-    imgSrc:
-        'https://images.unsplash.com/photo-1507646227500-4d389b0012be?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1400&q=80',
-    type: 'VOICE SPEAKER',
-    product: 'A really good speaker',
-    description: '£22/day',
-    numberOfRatings: 5,
-    users: 180,
-  },
-  {
-    id: 4,
-    imgSrc:
-        'https://images.unsplash.com/photo-1486611367184-17759508999c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1566&q=80',
-    type: 'DRONE',
-    product: 'A really good drone',
-    description: '£14/day',
-    numberOfRatings: 2,
-    users: 80,
-  },
-  {
-    id: 5,
-    imgSrc:
-        'https://images.unsplash.com/photo-1521405924368-64c5b84bec60?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60',
-    type: 'DRONE',
-    product: 'A really good drone',
-    description: '£19/day',
-    numberOfRatings: 3,
-    users: 80,
-  },
-  {
-    id: 6,
-    imgSrc:
-        'https://images.unsplash.com/photo-1506947411487-a56738267384?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60',
-    type: 'DRONE',
-    product: 'A really good drone',
-    description: '£9/day',
-    numberOfRatings: 5,
-    users: 80,
-  },
-  {
-    id: 7,
-    imgSrc:
-        'https://images.unsplash.com/photo-1504890001746-a9a68eda46e2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60',
-    type: 'DRONE',
-    product: 'A really good drone',
-    description: '£27/day',
-    numberOfRatings: 4,
-    users: 80,
-  },
-  {
-    id: 8,
-    imgSrc:
-        'https://images.unsplash.com/photo-1527977966376-1c8408f9f108?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60',
-    type: 'DRONE',
-    product: 'A really good drone',
-    description: '£30/day',
-    numberOfRatings: 4,
-    users: 80,
-  },
-  {
-    id: 9,
-    imgSrc:
-        'https://images.unsplash.com/photo-1512790182412-b19e6d62bc39?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2089&q=80',
-    type: 'CAMERA',
-    product: 'A really good camera',
-    description: '£12/day',
-    numberOfRatings: 4,
-    users: 80,
-  },
-  {
-    id: 10,
-    imgSrc:
-        'https://images.unsplash.com/photo-1520390138845-fd2d229dd553?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2089&q=80',
-    type: 'CAMERA',
-    product: 'A really good camera',
-    description: '£44/day',
-    numberOfRatings: 3,
-    users: 80,
-  },
-  {
-    id: 11,
-    imgSrc:
-        'https://images.unsplash.com/photo-1519638831568-d9897f54ed69?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80',
-    type: 'CAMERA',
-    product: 'A really good camera',
-    description: '£9/day',
-    numberOfRatings: 5,
-    users: 80,
-  },
-  {
-    id: 12,
-    imgSrc:
-        'https://images.unsplash.com/photo-1488684430052-f2d92fb178c2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1952&q=80',
-    type: 'CAMERA',
-    product: 'A really good camera',
-    description: '£10/day',
-    numberOfRatings: 5,
-    users: 80,
-  },
-];
-
-const searchData = allData; //eslint-disable-line
-
-function queryStringToJSON(queryString) {
-  if (queryString.indexOf('?') > -1) {
-    queryString = queryString.split('?')[1];
-  }
-  const pairs = queryString.split('&');
-  const result = {};
-  pairs.forEach((pair) => {
-    pair = pair.split('=');
-    result[pair[0]] = decodeURIComponent(pair[1] || '');
-  });
-  return result;
-}
-
-function formatSearchTerm(input) {
-  const char0 = input.charAt().toUpperCase();
-  const restOfString = input.toLowerCase().slice(1);
-  const s = restOfString.charAt(restOfString.length - 1) === 's' ? '' : 's';
-  const result = `${char0}${restOfString}${s}`;
-  return result;
-}
-
-const filterData = (data, searchTerm) => data.filter((each) => {
-  const type = each.type.split(' ').map(item => item.toLowerCase());
-  const match = searchTerm.includes(type) || type.includes(searchTerm);
-  if (match) {
-    return true;
-  }
-
-  return false;
-});
+const getData = getDataFunc; //eslint-disable-line
+const formatSearchTerm = formatSearchTermFunc; //eslint-disable-line
+const filterData = filterDataFunc; //eslint-disable-line
+const queryStringToJSON = queryStringToJSONFunc; //eslint-disable-line
 
 function createExploreCards(data) {
   const makeCards = ExploreCardMaker; //eslint-disable-line
   const cardData = [{
     title: 'Rent',
     photo: data[0].imgSrc,
+    href: '',
   },
   {
     title: 'Instructors',
     photo:
       'https://images.unsplash.com/photo-1500048993953-d23a436266cf?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60',
+    href: '',
   }];
 
+  // creates to explore cards for above data
   const cards = cardData.map(item => makeCards(item));
 
   return cards;
 }
 
-function createElements(data, searchTerm) {
-  const makeCards = ProductCardMaker; //eslint-disable-line
+function createElements(data, searchTerm, numOfDays) {
+  // from ProductCard component - returns product card element
+  const MakeCards = ProductCardMaker; //eslint-disable-line
+  // calls function to format string for Explore section
   const formattedSearchTerm = formatSearchTerm(searchTerm);
 
+  // checks if a search was made
   const searchTermExists = searchTerm === 'please enter a search term';
+  // sets explore section header depending on whether search term exists
   const headerText = searchTermExists ? 'You did not enter a search term' : `Explore ${formattedSearchTerm}`;
 
+  // filters data returned from API to only include results that match the search term
   const filteredSearchResults = filterData(data, searchTerm);
+  // calls function to create array of explore cards
   const exploreCards = createExploreCards(filteredSearchResults);
-  const productCards = filteredSearchResults.map(each => makeCards(each));
+  // returns an array of product cards based on the filtered data returned from the api
+  const productCards = filteredSearchResults
+    .map(each => new MakeCards(each, true, numOfDays).render());
 
+  // returns text for header, cards for explore section and result cards based on search term
   return {
     headerText,
     exploreCards,
@@ -189,41 +50,63 @@ function createElements(data, searchTerm) {
   };
 }
 
+function findNumOfDays(date, date2) {
+  // returns the difference between the two dates in days
+  const d = new Date(date);
+  const d2 = new Date(date2);
+  const result = ((d2 - d) / 1000 / 60 / 60 / 24);
+  return result;
+}
+
 function setInitialSearch(element, searchTerm) {
   if (searchTerm) {
-    return element.setAttribute('value', searchTerm);
+    // if the search term exists set the search input field to the searcht term
+    element.setAttribute('value', searchTerm);
   }
-  return null;
 }
 
 function setInitialDates(element, date, date2) {
   const months = [
     'jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec',
   ];
+
   const el = element;
-  const dateArr = date.split('-');
-  const dateArr2 = date2.split('-');
+
   if (!date || !date2) {
+    // if there are no dates in query string return the string date
     el.textContent = 'Date';
   } else {
+    // if both dates appear in query string return a formatted string of the two dates
+    const dateArr = date.split('-');
+    const dateArr2 = date2.split('-');
     el.textContent = `${dateArr[2]} ${months[Number(dateArr[1] - 1)]} - ${dateArr2[2]} ${months[Number(dateArr2[1] - 1)]}`;
   }
 }
 
-function createElementsAndRenderToDom(data, searchTerm) {
+function createElementsAndRenderToDom(data, searchTerm, numOfDays) {
+  // selects header element or explore section on results page
   const header = document.querySelector('#exploreHeader');
+
+  // append items to DOM when called from below
   const renderResults = (elements, id) => {
     const div = document.querySelector(id);
+    // clear previous results
     div.innerHTML = '';
     if (searchTerm) {
+      // if search term exists render relevant results
       elements.forEach(item => div.appendChild(item));
     }
   };
 
   if (searchTerm) {
-    const { headerText, exploreCards, productCards } = createElements(data, searchTerm);
+    // call create element function with data returned from api and search term from query
+    const { headerText, exploreCards, productCards } = createElements(data, searchTerm, numOfDays);
+    // set explore header to text returned from createElements function
     header.textContent = headerText;
+    // call above renderResults function with elements returned from createElements function
+    // populates explore cards in "Explore search term" section
     renderResults(exploreCards, '.explore-tile-wrapper', searchTerm);
+    // populates result cards with relevant products for "Recommended products" section
     renderResults(productCards, '#searchResults', searchTerm);
   } else {
     header.textContent = 'You didn\'t enter a search term';
@@ -232,22 +115,45 @@ function createElementsAndRenderToDom(data, searchTerm) {
   }
 }
 
-(function initialRender(data) {
-  const searchBox = document.querySelector('#searchInput');
+function initialRender(data) {
+  // selectors for adding info to search box and dateBox, and adding event listener to search form
+  const searchInput = document.querySelector('#searchInput');
   const dateBox = document.querySelector('#dateBox');
+  const searchForm = document.querySelector('#searchForm');
+
+  // for utils/UtilFunctions.js - pulls out values from query string and returns as JSON
   const queryJSON = queryStringToJSON(document.location.search);
-  const parsedQuery = queryJSON.term;
-  setInitialSearch(searchBox, parsedQuery);
+  // search term or empty string if search term is undefined
+  const parsedQuery = queryJSON.term || '';
+  // utils/UtilFunctions.js - finds the difference (in days) between two dates in query string
+  const numOfDays = findNumOfDays(queryJSON.dateFrom, queryJSON.dateTo);
+
+  // sets search input field in heading to search term from query string
+  setInitialSearch(searchInput, parsedQuery);
+  // sets date field in heading to dates from query string
   setInitialDates(dateBox, queryJSON.dateFrom, queryJSON.dateTo);
-  createElementsAndRenderToDom(data, parsedQuery);
-}(searchData));
+  // calls function to create cards for search results
+  createElementsAndRenderToDom(data, parsedQuery.toLowerCase(), numOfDays);
 
-(function reRenderOnSearch(data) {
-  const searchBox = document.querySelector('#searchInput');
-
-  searchBox.addEventListener('change', (e) => {
-    const { value } = e.target;
-    searchBox.setAttribute('value', value);
-    createElementsAndRenderToDom(data, value);
+  // add event listened for if search field in header is updated
+  searchForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const { value } = searchInput;
+    // calls function to create cards for new search results
+    createElementsAndRenderToDom(data, value.toLowerCase());
   });
-}(searchData));
+
+  const closeItem = document.querySelector('#closeItem');
+
+  closeItem.addEventListener('click', () => {
+    const itemAdded = document.querySelector('#itemAdded');
+    itemAdded.classList.toggle('item-added-open');
+  });
+}
+
+/*
+ from util/utilFunctions.js -
+ async function calls api to return json product data. Returns all data as small file.
+ then calls initial render once get data return value
+ */
+getData().then(data => initialRender(data));

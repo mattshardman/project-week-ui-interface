@@ -14,31 +14,43 @@
       href="https://fonts.googleapis.com/icon?family=Material+Icons"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous" />
-    <link rel="icon" href="https://res.cloudinary.com/dgdniqfi9/image/upload/v1549393248/lambda/Screenshot_2019-02-05_at_18.59.03.png" />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.7.1/css/all.css"
+      integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="icon"
+      href="https://res.cloudinary.com/dgdniqfi9/image/upload/v1549393248/lambda/Screenshot_2019-02-05_at_18.59.03.png"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.js"></script>
+    <script src="utils/utilFunctions.js" async></script>
     <script src="header/Header.js" async></script>
-    <script src="explore-card/ExploreCard.js" async></script>
-    <script src="carousel/Carousel.js" async></script>
-    <script src="product-card/ProductCard.js" async></script>
+    <script src="components/explore-card/ExploreCard.js" async></script>
+    <script src="components/carousel/Carousel.js" async></script>
+    <script src="components/pop-up/PopUp.js" async></script>
+    <script src="components/product-card/ProductCard.js" async></script>
     <script src="search/search.js" async></script>
     <script src="home/index.js" async></script>
+    
     <title>Hire Products</title>
   </head>
   <body>
     <header class="banner">
       <div class="logo-section">
-      <a href="/" class="logo">
-        <div >H</div>
-      </a>
-      <button id="drop-down-arrow">
-        <i class="material-icons arrow">
-          expand_more
-        </i>
-      </button>
-    </div>
+        <a href="/" class="logo">
+          <div>H</div>
+        </a>
+        <button id="drop-down-arrow">
+          <i class="material-icons arrow">
+            expand_more
+          </i>
+        </button>
+      </div>
       <nav class="menu">
         <div class="menu-items">
-          <a class="menu-item" href="">Home</a>
+          <a class="menu-item" href="/">Home</a>
           <hr />
           <a class="menu-item" href="">Download the App</a>
           <a class="menu-item" href="">Sell a product</a>
@@ -60,39 +72,45 @@
         </div>
       </nav>
     </header>
-    
+
     <section class="hero">
       <div class="bg">
         <h1 class="strap-line">Hire unique products at a moments notice.</h1>
       </div>
-      <div class="input-section">
-        <h1 class="heading-desktop">
-          Hire unique products at a moments notice.
-        </h1>
-        <form action="">
-          <div class="label">
-            <small>WHAT</small>
-            <input
-              type="text"
-              class="input"
-              placeholder="Anything"
-              id="search"
-            />
-          </div>
-          <div class="input-dates">
+      <div class="input-wrapper">
+        <div class="input-section">
+          <h1 class="heading-desktop">
+            Hire unique products at a moments notice.
+          </h1>
+          <form action="">
             <div class="label">
-              <small>FROM</small>
-              <input id="dateFrom" type="date" class="input input-from" />
+              <small>WHAT</small>
+              <input
+                type="text"
+                class="input"
+                placeholder="Anything"
+                id="search"
+              />
+            </div>
+            <div class="input-dates">
+              <div class="label">
+                <small>FROM</small>
+                <input id="dateFrom" type="date" class="input input-from" />
+              </div>
+              <div class="label">
+                <small>TO</small>
+                <input id="dateTo" type="date" class="input input-to" />
+              </div>
             </div>
             <div class="label">
-              <small>TO</small>
-              <input id="dateTo" type="date" class="input input-to" />
+              <button id="search-button" type="submit">Search</button>
             </div>
-          </div>
-          <div class="label">
-            <button id="search-button" type="submit">Search</button>
-          </div>
-        </form>
+          </form>
+        </div>
+        <div class="earn-money">
+          <i class="material-icons">laptop</i>&nbsp;Earn money by renting your
+          stuff&nbsp; <i class="material-icons home-arrow">arrow_forward_ios</i>
+        </div>
       </div>
     </section>
 
@@ -105,15 +123,17 @@
 
     <section class="introducing-plus">
       <h2 class="heading">Introducing Hire Plus</h2>
-      <p class="sub-heading">Get the best deals on the best products.</p>
+      <p class="sub-heading">Get the best deals on the best products</p>
       <div class="info-card-wrapper">
         <div class="info-card">
           <div class="info-card-content">
             <h1>H plus</h1>
-            <button class="info-button">
-              EXPLORE PRODUCTS&nbsp;&nbsp;
-              <i class="material-icons">arrow_forward_ios</i>
-            </button>
+            <a href="/search.html?term=drone laptop camera&dateFrom=&dateTo=" class="info-button">
+              
+                EXPLORE PRODUCTS&nbsp;&nbsp;
+                <i class="material-icons">arrow_forward_ios</i>
+            
+            </a>
           </div>
         </div>
       </div>
